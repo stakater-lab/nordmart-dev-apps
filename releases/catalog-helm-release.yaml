@@ -14,9 +14,11 @@ spec:
     version: 0.0.2
   values:
     applicationName: "catalog"
-    image:
-      repository: docker.release.stakater.com:443/stakater/catalog
-      tag: v0.0.2
+    deployment:
+      image:
+        repository: docker.release.stakater.com:443/stakater/catalog
+        tag: v0.0.2
+      imagePullSecrets: "docker-registry-nexus-secret"
     service:
       annotations:
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
