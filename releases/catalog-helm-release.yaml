@@ -1,7 +1,7 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: nordmart-dev
+  name: catalog-nordmat-dev
   namespace: nordmart-dev
   annotations:
     flux.weave.works/automated: "true"
