@@ -1,0 +1,29 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: nordmart-dev
+  namespace: nordmart-dev
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: semver:~0.0.*
+spec:
+  releaseName: nordmart-dev
+  chart:
+    repository: https://stakater.github.io/stakater-charts/
+    name: application
+    version: 0.0.2
+  values:
+    applicationName: "catalog"
+    image:
+      repository: docker.release.stakater.com:443/stakater/catalog
+      tag: v0.0.2
+    service:
+      annotations:
+        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
+        config.xposer.stakater.com/IngressURLPath: /
+        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}'
+    rbac:
+      create: false
+      serviceAccount:
+        name: default
+    configMap: {}
