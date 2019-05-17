@@ -23,7 +23,7 @@ spec:
       annotations:
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
         config.xposer.stakater.com/IngressURLPath: /
-        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}'
+        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}}'
     rbac:
       create: false
       serviceAccount:
