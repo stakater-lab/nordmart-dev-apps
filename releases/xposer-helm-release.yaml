@@ -1,0 +1,30 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: xposer-nordmat-dev
+  namespace: nordmart-dev
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: semver:~0.0.*
+spec:
+  releaseName: xposer-nordmat-dev
+  chart:
+    repository: https://stakater.github.io/stakater-charts/
+    name: xposer
+    version: 0.0.15
+  values:
+    xposer:        
+      configFilePath: /configs/config.yaml
+      watchGlobally: false
+      exposeServiceURL: locally
+      config:
+        domain: stakater.com
+        ingressURLTemplate: "{{.Service}}.{{.Domain}}"
+        ingressURLPath: /
+        ingressNameTemplate: "{{.Service}}"
+        tls: false
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        value: "app"
+        effect: "NoSchedule"
