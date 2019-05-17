@@ -29,6 +29,11 @@ spec:
       - name: SECURE_COOLSTORE_GW_ENDPOINT
         value: "https://gateway.stakater.com"
     service:
+      ports:
+      - port: 4200
+        name: web
+        protocol: TCP
+        targetPort: 4200
       annotations:
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
         config.xposer.stakater.com/IngressURLPath: /
