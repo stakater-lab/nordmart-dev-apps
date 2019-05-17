@@ -15,6 +15,8 @@ spec:
   values:
     applicationName: "gateway"
     deployment:
+      podLabels:
+        app: gateway
       image:
         repository: docker.release.stakater.com:443/stakater/gateway
         tag: v0.0.2
