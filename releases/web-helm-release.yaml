@@ -1,3 +1,4 @@
+---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
@@ -19,7 +20,7 @@ spec:
         app: web
       image:
         repository: docker.release.stakater.com:443/stakater/web
-        tag: v0.0.7
+        tag: 0.0.0-PR-8-1-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
       - name: PORT
