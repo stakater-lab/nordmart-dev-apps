@@ -42,3 +42,4 @@ spec:
       serviceAccount:
         name: default
     configMap:
+      enabled: false
