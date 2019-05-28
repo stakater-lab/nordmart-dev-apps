@@ -27,7 +27,16 @@ spec:
         value: "catalog.nordmart-dev-apps:8080"
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations: []
+      annotations:
+        config.xposer.stakater.com/Domain: workshop.stakater.com
+        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
+        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
+        config.xposer.stakater.com/TLS: true
+        config.xposer.stakater.com/TLSSecretNameTemplate: "tls-cert"
+        xposer.stakater.com/annotations: |-
+          kubernetes.io/ingress.class: external-ingress
+          ingress.kubernetes.io/force-ssl-redirect: true
+          exposeIngressUrl: locally
     rbac:
       create: false
       serviceAccount:
