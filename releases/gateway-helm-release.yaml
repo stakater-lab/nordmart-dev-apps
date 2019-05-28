@@ -20,7 +20,7 @@ spec:
         app: gateway
       image:
         repository: docker.release.stakater.com:443/stakater/gateway
-        tag: SNAPSHOT-PR-5-1
+        tag: v0.0.3
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
       - name: CATALOG_API_HOST
