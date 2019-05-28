@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.2
+    version: 0.0.5
   values:
     applicationName: "web"
     deployment:
@@ -35,9 +35,9 @@ spec:
         name: web
         protocol: TCP
         targetPort: 4200
-      annotations: {}
+      annotations:
     rbac:
       create: false
       serviceAccount:
         name: default
-    configMap: {}
+    configMap:

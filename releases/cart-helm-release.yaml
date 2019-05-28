@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.2
+    version: 0.0.5
   values:
     applicationName: "cart"
     deployment:
@@ -26,9 +26,9 @@ spec:
         value: "catalog.nordmart-dev:8080"
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations: {}
+      annotations: 
     rbac:
       create: false
       serviceAccount:
         name: default
-    configMap: {}
+    configMap:
