@@ -18,6 +18,7 @@ spec:
     deployment:
       podLabels:
         app: catalog
+      volumes:
       image:
         repository: docker.release.stakater.com:443/stakater/catalog
         tag: v0.0.8
