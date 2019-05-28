@@ -1,3 +1,4 @@
+---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
@@ -19,7 +20,7 @@ spec:
         app: gateway
       image:
         repository: docker.release.stakater.com:443/stakater/gateway
-        tag: v0.0.2
+        tag: SNAPSHOT-PR-4-1
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
       - name: CATALOG_API_HOST
