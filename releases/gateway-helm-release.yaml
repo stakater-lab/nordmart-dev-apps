@@ -2,10 +2,10 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-gateway
-  namespace: nordmart-dev
+  namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.chart-image: semver:~0.0.*
+    flux.weave.works/tag.deployment: semver:~0.0.*
 spec:
   releaseName: nordmart-dev-gateway
   chart:
