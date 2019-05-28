@@ -17,12 +17,13 @@ spec:
     deployment:
       podLabels:
         app: catalog
+      volumes:
       image:
         repository: docker.release.stakater.com:443/stakater/catalog
         tag: v0.0.2
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations:annotations:
+      annotations:
     rbac:
       create: false
       serviceAccount:

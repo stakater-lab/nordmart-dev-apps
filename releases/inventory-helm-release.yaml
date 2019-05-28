@@ -17,6 +17,7 @@ spec:
     deployment:
       podLabels:
         app: inventory
+      volumes:
       image:
         repository: docker.release.stakater.com:443/stakater/inventory
         tag: v0.0.1
