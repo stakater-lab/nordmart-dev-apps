@@ -1,3 +1,4 @@
+---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
@@ -19,12 +20,12 @@ spec:
         app: catalog
       image:
         repository: docker.release.stakater.com:443/stakater/catalog
-        tag: v0.0.2
+        tag: v0.0.8
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations:annotations:
+      annotations:
     rbac:
       create: false
       serviceAccount:
         name: default
-    configMap: 
+    configMap:
