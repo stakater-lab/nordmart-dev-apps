@@ -20,16 +20,13 @@ spec:
         app: cart
       image:
         repository: docker.release.stakater.com:443/stakater/cart
-        tag: v0.0.8
+        tag: SNAPSHOT-PR-2-1
       env:
       - name: CATALOG_ENDPOINT
         value: "catalog.nordmart-dev:8080"
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations:
-        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
-        config.xposer.stakater.com/IngressURLPath: /
-        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}}'
+      annotations: {}
     rbac:
       create: false
       serviceAccount:

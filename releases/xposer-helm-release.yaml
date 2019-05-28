@@ -18,13 +18,10 @@ spec:
       watchGlobally: false
       exposeServiceURL: locally
       config:
-        domain: stakater.com
-        ingressURLTemplate: "{{.Service}}.{{.Domain}}"
+        domain: workshop.stakater.com
+        ingressURLTemplate: "{{.Service}}-dev.{{.Domain}}"
         ingressURLPath: /
-        ingressNameTemplate: "{{.Service}}"
-        tls: false
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "app"
-        effect: "NoSchedule"
+        ingressNameTemplate: "{{.Service}}-dev"
+        tlsSecretNameTemplate: "tls-cert"
+        tls: true
+      tolerations: {}
