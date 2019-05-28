@@ -22,7 +22,7 @@ spec:
         repository: docker.release.stakater.com:443/stakater/web
         tag: v0.0.8
       imagePullSecrets: "docker-registry-nexus-secret"
-      volumes:
+      volumes: {}
       env:
       - name: PORT
         value: "4200"
@@ -36,7 +36,7 @@ spec:
         name: web
         protocol: TCP
         targetPort: 4200
-      annotations:
+      annotations: []
     rbac:
       create: false
       serviceAccount:

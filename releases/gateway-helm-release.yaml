@@ -22,7 +22,7 @@ spec:
         repository: docker.release.stakater.com:443/stakater/gateway
         tag: v0.0.3
       imagePullSecrets: "docker-registry-nexus-secret"
-      volumes:
+      volumes: {}
       env:
       - name: CATALOG_API_HOST
         value: "catalog.nordmart-dev-apps"
@@ -41,7 +41,7 @@ spec:
       - name: HTTP_PORT
         value: "8080"
     service:
-      annotations:
+      annotations: []
     rbac:
       create: false
       serviceAccount:

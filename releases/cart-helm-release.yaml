@@ -21,13 +21,13 @@ spec:
       image:
         repository: docker.release.stakater.com:443/stakater/cart
         tag: v0.0.8
-      volumes:
+      volumes: {}
       env:
       - name: CATALOG_ENDPOINT
         value: "catalog.nordmart-dev-apps:8080"
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations: 
+      annotations: []
     rbac:
       create: false
       serviceAccount:
