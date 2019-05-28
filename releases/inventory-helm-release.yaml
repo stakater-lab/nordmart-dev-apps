@@ -22,10 +22,7 @@ spec:
         tag: v0.0.1
       imagePullSecrets: "docker-registry-nexus-secret"
     service:
-      annotations:
-        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
-        config.xposer.stakater.com/IngressURLPath: /
-        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}}'
+      annotations: {}
     rbac:
       create: false
       serviceAccount:

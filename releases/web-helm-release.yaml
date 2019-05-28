@@ -35,10 +35,7 @@ spec:
         name: web
         protocol: TCP
         targetPort: 4200
-      annotations:
-        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
-        config.xposer.stakater.com/IngressURLPath: /
-        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}}'
+      annotations: {}
     rbac:
       create: false
       serviceAccount:

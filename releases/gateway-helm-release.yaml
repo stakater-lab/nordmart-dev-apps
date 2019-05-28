@@ -1,4 +1,3 @@
----
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
@@ -20,7 +19,7 @@ spec:
         app: gateway
       image:
         repository: docker.release.stakater.com:443/stakater/gateway
-        tag: v0.0.3
+        tag: v0.0.2
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
       - name: CATALOG_API_HOST
@@ -40,10 +39,7 @@ spec:
       - name: HTTP_PORT
         value: "8080"
     service:
-      annotations:
-        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
-        config.xposer.stakater.com/IngressURLPath: /
-        config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}.{{.Domain}}'
+      annotations: {}
     rbac:
       create: false
       serviceAccount:
