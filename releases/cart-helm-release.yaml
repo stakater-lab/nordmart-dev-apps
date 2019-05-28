@@ -31,7 +31,7 @@ spec:
         config.xposer.stakater.com/Domain: workshop.stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
-        config.xposer.stakater.com/TLS: true
+        config.xposer.stakater.com/TLS: 'true'
         config.xposer.stakater.com/TLSSecretNameTemplate: "tls-cert"
         xposer.stakater.com/annotations: |-
           kubernetes.io/ingress.class: external-ingress
