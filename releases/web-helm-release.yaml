@@ -29,7 +29,7 @@ spec:
       # - name: SSO_URL
       #   value: "https://keycloak.global.stakater.com"
       - name: SECURE_COOLSTORE_GW_ENDPOINT
-        value: "https://gateway.stakater.com"
+        value: "https://gateway-dev.workshop.stakater.com"
     service:
       ports:
       - port: 4200
