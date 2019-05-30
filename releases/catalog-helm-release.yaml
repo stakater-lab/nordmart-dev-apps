@@ -20,9 +20,28 @@ spec:
         app: catalog
       volumes: {}
       image:
-        repository: docker.release.stakater.com:443/stakater/catalog
-        tag: v0.0.4
+        repository: docker-release.workshop.stakater.com:443/stakater/catalog
+        tag: v0.0.5
       imagePullSecrets: "docker-registry-nexus-secret"
+      probes:
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /actuator/health
+            port: 8080
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /actuator/health
+            port: 8080
     service:
       annotations:
         config.xposer.stakater.com/Domain: workshop.stakater.com

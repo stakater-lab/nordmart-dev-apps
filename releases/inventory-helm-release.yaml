@@ -20,9 +20,28 @@ spec:
         app: inventory
       volumes: {}
       image:
-        repository: docker.release.stakater.com:443/stakater/inventory
-        tag: v0.0.2
+        repository: docker-release.workshop.stakater.com:443/stakater/inventory
+        tag: v0.0.4
       imagePullSecrets: "docker-registry-nexus-secret"
+      probes:
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /healthCheck
+            port: 8080
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /healthCheck
+            port: 8080
     service:
       annotations:
         config.xposer.stakater.com/Domain: workshop.stakater.com
