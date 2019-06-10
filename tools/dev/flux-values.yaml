@@ -11,6 +11,7 @@ helmOperator:
 git:
   url: ssh://git@github.com/stakater-lab/nordmart-dev-apps.git
   pollInterval: "10s"
+  path: "releases"
 registry:
   pollInterval: "1m"
   excludeImage: "None"
