@@ -17,8 +17,6 @@ timeout(time: 20, unit: 'MINUTES') {
                         // if master branch
                         if (utils.isCD()) {
                             selectedTarget = "install"
-                        } else {
-                            selectedTarget = "install-dry-run"
                         }
 
                         executeMakeTargets {
