@@ -4,6 +4,9 @@ metadata:
   labels:
     prometheus: k8s
     role: prometheus-rulefiles
+    release: stakater-monitoring-prometheus-operator
+    kind: apps
+    app: stakater
   name: prometheus-rules-catalog-dev
   namespace: monitoring
 spec:
