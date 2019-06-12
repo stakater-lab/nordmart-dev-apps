@@ -4,13 +4,16 @@ metadata:
   labels:
     prometheus: k8s
     role: prometheus-rulefiles
+    release: stakater-monitoring-prometheus-operator
+    kind: apps
+    app: stakater
   name: prometheus-rules-catalog-dev
   namespace: monitoring
 spec:
   groups:
   - name: application.rules
     rules:
-    - alert: HighCatalogApiUsage
+    - alert: HighCatalogDevApiUsage
       annotations:
         message: 'Api usage is greater than 10.'
       expr: count_requests_total > 10
