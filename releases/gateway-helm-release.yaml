@@ -20,7 +20,7 @@ spec:
         app: gateway
       image:
         repository: docker-release.workshop.stakater.com:443/stakater/gateway
-        tag: v0.0.6
+        tag: v0.0.7
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
