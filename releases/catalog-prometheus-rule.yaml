@@ -11,7 +11,7 @@ metadata:
   namespace: monitoring
 spec:
   groups:
-  - name: application.rules
+  - name: application-dev.rules
     rules:
     - alert: HighCatalogDevApiUsage
       annotations:
