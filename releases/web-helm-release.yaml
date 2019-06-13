@@ -20,7 +20,7 @@ spec:
         app: web
       image:
         repository: docker-release.workshop.stakater.com:443/stakater/web
-        tag: v0.0.12
+        tag: v0.0.13
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
