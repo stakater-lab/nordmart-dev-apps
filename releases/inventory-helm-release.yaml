@@ -6,13 +6,13 @@ metadata:
   namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.deployment: semver:~0.0.*
+    flux.weave.works/tag.deployment: semver:*
 spec:
   releaseName: nordmart-dev-inventory
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.5
+    version: 0.0.6
   values:
     applicationName: "inventory"
     deployment:
@@ -20,8 +20,8 @@ spec:
         app: inventory
       volumes: {}
       image:
-        repository: docker-release.workshop.stakater.com:443/stakater/inventory
-        tag: v0.0.8
+        repository: docker.delivery.stackator.com:443/stakater-lab/inventory
+        tag: v0.0.9
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:

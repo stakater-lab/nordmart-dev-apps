@@ -6,13 +6,13 @@ metadata:
   namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.deployment: semver:~0.0.*
+    flux.weave.works/tag.deployment: semver:*
 spec:
   releaseName: nordmart-dev-catalog
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.5
+    version: 0.0.6
   values:
     applicationName: "catalog"
     deployment:
@@ -20,7 +20,7 @@ spec:
         app: catalog
       volumes: {}
       image:
-        repository: docker-release.workshop.stakater.com:443/stakater/catalog
+        repository: docker.delivery.stackator.com:443/stakater-lab/catalog
         tag: v0.0.10
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
