@@ -43,6 +43,12 @@ spec:
             path: /actuator/health
             port: 8080
     service:
+      ports:
+      - port: 8080
+        name: https
+        targetPort: 8080
+      additionalLabels: 
+        expose: "true"
       annotations:
         config.xposer.stakater.com/Domain: stackator.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'

@@ -55,6 +55,8 @@ spec:
         name: web
         protocol: TCP
         targetPort: 4200
+      additionalLabels: 
+        expose: "true"
       annotations:
         config.xposer.stakater.com/Domain: stackator.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
