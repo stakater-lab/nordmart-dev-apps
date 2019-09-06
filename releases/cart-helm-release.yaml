@@ -47,7 +47,7 @@ spec:
             port: 8080
     service:
       annotations:
-        config.xposer.stakater.com/Domain: workshop.stakater.com
+        config.xposer.stakater.com/Domain: stackator.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'
