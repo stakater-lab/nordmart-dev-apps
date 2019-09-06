@@ -6,21 +6,21 @@ metadata:
   namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.deployment: semver:~0.0.*
+    flux.weave.works/tag.deployment: semver:*
 spec:
   releaseName: nordmart-dev-web
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.5
+    version: 0.0.6
   values:
     applicationName: "web"
     deployment:
       podLabels:
         app: web
       image:
-        repository: docker-release.workshop.stakater.com:443/stakater/web
-        tag: v0.0.14
+        repository: docker.delivery.stackator.com:443/stakater-lab/web
+        tag: v0.0.15
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
