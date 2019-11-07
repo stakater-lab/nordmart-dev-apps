@@ -20,7 +20,7 @@ spec:
         app: cart
       image:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/cart
-        tag: 0.0.0-PR-18-8-SNAPSHOT
+        tag: 0.0.0-PR-19-1-SNAPSHOT
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
@@ -50,7 +50,7 @@ spec:
       - port: 8080
         name: https
         targetPort: 8080
-      additionalLabels: 
+      additionalLabels:
         expose: "true"
       annotations:
         config.xposer.stakater.com/Domain: stackator.com
