@@ -49,7 +49,7 @@ spec:
       # - name: SSO_URL
       #   value: "https://keycloak.global.stakater.com"
       - name: SECURE_GW_ENDPOINT
-        value: "https://gateway-dev.workshop.stakater.com "
+        value: "https://gateway-dev.workshop.stakater.com/"
     service:
       ports:
       - port: 4200
