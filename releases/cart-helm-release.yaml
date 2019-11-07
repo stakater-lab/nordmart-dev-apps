@@ -24,7 +24,7 @@ spec:
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
-        value: "catalog.nordmart-dev-apps:8080"
+        value: "catalog.nordmart-dev-apps.svc.cluster.local:8080"
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
