@@ -19,7 +19,7 @@ spec:
       podLabels:
         app: web
       image:
-        repository: ddocker-delivery.workshop.stakater.com:443/stakater-lab/web
+        repository: docker-delivery.workshop.stakater.com:443/stakater-lab/web
         tag: 0.0.0-PR-18-2-SNAPSHOT
 
       imagePullSecrets: "docker-registry-nexus-secret"
