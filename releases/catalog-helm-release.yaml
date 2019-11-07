@@ -20,7 +20,7 @@ spec:
         app: catalog
       volumes: {}
       image:
-        repository: docker.delivery.stackator.com:443/stakater-lab/catalog
+        repository: docker-delivery.workshop.stakater.com:443/stakater-lab/catalog
         tag: v0.0.10
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
