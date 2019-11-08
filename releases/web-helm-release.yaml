@@ -20,7 +20,7 @@ spec:
         app: web
       image:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/web
-        tag: 0.0.0-PR-18-2-SNAPSHOT
+        tag: 0.0.0-PR-20-1-SNAPSHOT
 
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
@@ -56,7 +56,7 @@ spec:
         name: web
         protocol: TCP
         targetPort: 4200
-      additionalLabels: 
+      additionalLabels:
         expose: "true"
       annotations:
         config.xposer.stakater.com/Domain: stackator.com
