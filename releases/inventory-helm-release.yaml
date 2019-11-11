@@ -21,7 +21,7 @@ spec:
       volumes: {}
       image:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/inventory
-        tag: 0.0.0-PR-12-2-SNAPSHOT
+        tag: 0.0.0-PR-14-1-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
