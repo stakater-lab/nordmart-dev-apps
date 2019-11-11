@@ -47,7 +47,7 @@ spec:
       - port: 8080
         name: https
         targetPort: 8080
-      additionalLabels: 
+      additionalLabels:
         expose: "true"
       annotations:
         config.xposer.stakater.com/Domain: stackator.com
