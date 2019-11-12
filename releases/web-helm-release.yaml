@@ -22,7 +22,7 @@ spec:
         app: web
       image:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/web
-        tag: 0.0.0-PR-21-3-SNAPSHOT
+        tag: 0.0.0-PR-18-2-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
