@@ -16,6 +16,10 @@ spec:
   values:
     applicationName: "web"
     deployment:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      additionalPodAnnotations:
+        sidecar.istio.io/inject: "true"
       podLabels:
         app: web
       image:
