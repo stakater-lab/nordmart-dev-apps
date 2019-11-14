@@ -23,6 +23,23 @@ spec:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/catalog
         tag: 0.0.0-PR-21-7-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
+
+      env:
+      - name: MYSQL_HOST
+        value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
+
+      - name: MYSQL_USER
+        valueFrom:
+        secretKeyRef:
+          name: mysql-secret
+          key: MYSQL_USER_NAME
+
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: MYSQL_USER_PASSWORD
+
       probes:
         readinessProbe:
           failureThreshold: 3
@@ -42,6 +59,7 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
+      
     service:
       ports:
       - port: 8080
