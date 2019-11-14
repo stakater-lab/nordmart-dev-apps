@@ -44,8 +44,8 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: pliro-dev-secrets
-              key: mysql_root_password
+              name: mysql-secrets
+              key: MYSQL_USER_PASSWORD
         ports:
         - containerPort: 3306
           name: tcp
