@@ -37,6 +37,14 @@ spec:
         value: "app"
         effect: "NoSchedule"
 
+      initContainers:
+      - image: busybox
+        name: mysql-volume-cleaner
+        args: [/bin/sh, -c, 'rm -rf /var/lib/mysql/lost+found || true']
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-pvc
+
       containers:
       - image: mysql:5.7
         name: mysql
@@ -44,7 +52,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-secret
+              name: mysql-secrets
               key: MYSQL_USER_PASSWORD
         ports:
         - containerPort: 3306
