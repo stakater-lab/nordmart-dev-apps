@@ -38,7 +38,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: mysql-secret
-            key: mysql_passwrod
+            key: mysql_password
 
       probes:
         readinessProbe:
