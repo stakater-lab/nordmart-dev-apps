@@ -64,5 +64,5 @@ spec:
       storageClassName: hdd
       resources:
         requests:
-          storage: 2Gi
+          storage: 5Gi
 
