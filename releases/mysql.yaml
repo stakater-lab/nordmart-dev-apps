@@ -31,11 +31,6 @@ spec:
       labels:
         app: mysql
     spec:   
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "app"
-        effect: "NoSchedule"
 
       initContainers:
       - image: busybox
