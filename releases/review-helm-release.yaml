@@ -22,7 +22,7 @@ spec:
       image:
         repository: docker-delivery.workshop.stakater.com:443/stakater-lab/review
         tag: 0.0.0-PR-1-9-SNAPSHOT
-      imagePullSecrets: "docker-registry-nexus-secret"
+      imagePullSecrets: "docker-nexus-registry-secret"
       env:
       - name: DB_NAME
         value: "nordmartDB"
