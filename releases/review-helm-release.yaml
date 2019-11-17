@@ -20,7 +20,7 @@ spec:
         app: review
       volumes: {}
       image:
-        repository: docker-delivery.workshop.stakater.com:443/stakater-lab/review
+        repository: docker-delivery.cp-stakater.com:443/stakater-lab/review
         tag: 0.0.0-PR-1-5-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
@@ -57,7 +57,7 @@ spec:
       additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: workshop.stakater.com
+        config.xposer.stakater.com/Domain: cp-stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'
