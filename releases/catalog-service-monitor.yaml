@@ -21,5 +21,4 @@ items:
     endpoints:
       - interval: 10s
         path: /actuator/prometheus     # The endpoint of service from which prometheus will scrape data
-        port: "8080"
-        name: https
+        port: https
