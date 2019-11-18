@@ -20,7 +20,7 @@ spec:
         app: gateway
       image:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/gateway
-        tag: 0.0.0-PR-18-2-SNAPSHOT
+        tag: 0.0.0-PR-19-1-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       probes:
         readinessProbe:
@@ -60,7 +60,7 @@ spec:
       - name: HTTP_PORT
         value: "8080"
       - name: REVIEW_API_HOST
-        value: "review.nordmart-dev-apps.svc.cluster.local "
+        value: "review.nordmart-dev-apps.svc.cluster.local"
       - name: REVIEW_API_PORT
         value: "8080"
     service:
