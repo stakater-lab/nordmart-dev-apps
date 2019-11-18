@@ -37,7 +37,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /actuator/health
+            path: /health
             port: 8080
         livenessProbe:
           failureThreshold: 3
@@ -46,7 +46,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /actuator/health
+            path: /health
             port: 8080
 
     service:
