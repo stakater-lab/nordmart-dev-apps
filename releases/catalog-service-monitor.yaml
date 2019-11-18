@@ -10,7 +10,7 @@ items:
       release: stakater-monitoring-po
     namespace: monitoring
   spec:
-    jobLabel: "k8s=app"
+    jobLabel: ""
     selector:
       matchLabels:
         release: nordmart-dev-catalog     # All services with this label will be monitored.
@@ -21,5 +21,4 @@ items:
     endpoints:
       - interval: 10s
         path: /actuator/prometheus     # The endpoint of service from which prometheus will scrape data
-        port: 8080
-        name: http
+        port: http
