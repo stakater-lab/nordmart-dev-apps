@@ -21,7 +21,7 @@ spec:
       volumes: {}
       image:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/catalog
-        tag: 0.0.0-PR-19-2-SNAPSHOT
+        tag: 0.0.0-PR-22-1-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
 
       # env:
