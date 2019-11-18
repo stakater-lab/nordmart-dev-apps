@@ -14,6 +14,7 @@ items:
     selector:
       matchLabels:
         release: nordmart-dev-catalog     # All services with this label will be monitored.
+        app: catalog
     namespaceSelector:
       matchNames:
       - nordmart-dev-apps       # The namespace in which the application will be deployed
