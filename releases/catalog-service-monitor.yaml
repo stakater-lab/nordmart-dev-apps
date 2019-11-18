@@ -7,10 +7,10 @@ items:
   metadata:
     name: stakater-nordmart-catalog-dev-monitor
     labels:
-      release: stakater-monitoring-prometheus-operator
+      release: stakater-monitoring-po
     namespace: monitoring
   spec:
-    jobLabel: ""
+    jobLabel: "k8s=app"
     selector:
       matchLabels:
         release: nordmart-dev-catalog     # All services with this label will be monitored.
