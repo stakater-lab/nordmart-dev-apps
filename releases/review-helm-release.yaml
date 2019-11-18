@@ -29,25 +29,25 @@ spec:
       - name: MONGO_HOST
         value: "mongodb-svc.nordmart-dev-apps.svc.cluster.local"
 
-      probes:
-        readinessProbe:
-          failureThreshold: 3
-          periodSeconds: 60
-          successThreshold: 1
-          timeoutSeconds: 1
-          initialDelaySeconds: 10
-          httpGet:
-            path: /actuator/health
-            port: 8080
-        livenessProbe:
-          failureThreshold: 3
-          periodSeconds: 60
-          successThreshold: 1
-          timeoutSeconds: 1
-          initialDelaySeconds: 10
-          httpGet:
-            path: /actuator/health
-            port: 8080
+      # probes:
+      #   readinessProbe:
+      #     failureThreshold: 3
+      #     periodSeconds: 
+      #     successThreshold: 1
+      #     timeoutSeconds: 1
+      #     initialDelaySeconds: 10
+      #     httpGet:
+      #       path: /actuator/health
+      #       port: 8080
+      #   livenessProbe:
+      #     failureThreshold: 3
+      #     periodSeconds: 60
+      #     successThreshold: 1
+      #     timeoutSeconds: 1
+      #     initialDelaySeconds: 10
+      #     httpGet:
+      #       path: /actuator/health
+      #       port: 8080
 
     service:
       ports:
