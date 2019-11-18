@@ -20,7 +20,7 @@ spec:
         app: cart
       image:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/cart
-        tag: 0.0.0-PR-24-7-SNAPSHOT
+        tag: 0.0.0-PR-24-8-SNAPSHOT
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
