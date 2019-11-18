@@ -21,7 +21,7 @@ spec:
       volumes: {}
       image:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/review
-        tag: 0.0.0-PR-1-6-SNAPSHOT
+        tag: 0.0.0-PR-1-11-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       env:
       - name: DB_NAME
