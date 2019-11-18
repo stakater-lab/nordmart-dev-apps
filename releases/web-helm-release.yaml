@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.11
+    version: 0.0.12
   values:
     applicationName: "web"
     deployment:
@@ -26,6 +26,10 @@ spec:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/web
         tag: 0.0.0-PR-23-8-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
+      fluentdConfigAnnotations:  
+          regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+          regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+          timeFormat: "%Y-%m-%d %H:%M:%S.%L"
       probes:
         readinessProbe:
           failureThreshold: 3
@@ -77,3 +81,4 @@ spec:
         name: default
     configMap:
       enabled: false
+

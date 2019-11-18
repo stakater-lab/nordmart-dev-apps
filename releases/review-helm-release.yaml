@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.10
+    version: 0.0.12
   values:
     applicationName: "review"
     deployment:
@@ -23,6 +23,10 @@ spec:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/review
         tag: 0.0.0-PR-1-11-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
+      fluentdConfigAnnotations:  
+          regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+          regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+          timeFormat: "%Y-%m-%d %H:%M:%S.%L"
       env:
       - name: DB_NAME
         value: "nordmartDB"
