@@ -21,7 +21,7 @@ spec:
       volumes: {}
       image:
         repository: docker-delivery.cp-stakater.com:443/stakater-lab/catalog
-        tag: 0.0.0-PR-23-1-SNAPSHOT
+        tag: 0.0.0-PR-24-1-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
@@ -32,17 +32,17 @@ spec:
       # - name: MYSQL_HOST
       #   value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
 
-      - name: MYSQL_USER
-        valueFrom:
-        secretKeyRef:
-          name: mysql-secret
-          key: mysql_username
+      # - name: MYSQL_USER
+      #   valueFrom:
+      #   secretKeyRef:
+      #     name: mysql-secret
+      #     key: mysql_username
 
-      - name: MYSQL_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: mysql-secret
-            key: mysql_password
+      # - name: MYSQL_PASSWORD
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: mysql-secret
+      #       key: mysql_password
 
       probes:
         readinessProbe:
