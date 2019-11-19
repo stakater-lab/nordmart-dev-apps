@@ -28,21 +28,6 @@ spec:
           (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
         regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
         timeFormat: "%Y-%m-%d %H:%M:%S.%L"
-      # env:
-      # - name: MYSQL_HOST
-      #   value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
-
-      # - name: MYSQL_USER
-      #   valueFrom:
-      #   secretKeyRef:
-      #     name: mysql-secret
-      #     key: mysql_username
-
-      # - name: MYSQL_PASSWORD
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: mysql-secret
-      #       key: mysql_password
 
       probes:
         readinessProbe:
