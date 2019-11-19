@@ -31,7 +31,6 @@ spec:
         value: "nordmartDB"
       - name: MONGO_HOST
         value: "mongodb-svc.nordmart-dev-apps.svc.cluster.local"
-​
       probes:
         readinessProbe:
           failureThreshold: 3
