@@ -33,8 +33,9 @@ spec:
       - name: MYSQL_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: mysql_password
-            key: mysql-secret
+            name: mysql-secret
+            key: mysql_password
+
       - name: MYSQL_HOST
         value: "mysql-svc.nordmart-dev-apps.svc.cluster.local "
 
