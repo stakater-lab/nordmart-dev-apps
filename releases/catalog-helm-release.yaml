@@ -38,7 +38,9 @@ spec:
             key: mysql_password
 
       - name: MYSQL_HOST
-        value: "mysql-svc.nordmart-dev-apps.svc.cluster.local "
+        value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
+      - name: MYSQL_DB_NAME
+        value: "catalog"
 
       probes:
         readinessProbe:
