@@ -20,9 +20,9 @@ spec:
         app: inventory
       volumes: {}
       image:
-        repository: docker-delivery.cp-stakater.com:443/stakater-lab/inventory
-        tag: 0.0.0-PR-17-1-SNAPSHOT
-      imagePullSecrets: "docker-registry-nexus-secret"
+        repository: stakater/stakater-nordmart-inventory
+        tag: v0.0.1
+      # imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
@@ -54,7 +54,7 @@ spec:
       additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: cp-stakater.com
+        config.xposer.stakater.com/Domain: teststack.stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'

@@ -19,13 +19,13 @@ spec:
       podLabels:
         app: cart
       image:
-        repository: docker-delivery.cp-stakater.com:443/stakater-lab/cart
-        tag: 0.0.0-PR-24-9-SNAPSHOT
+        repository: stakater/stakater-nordmart-cart
+        tag: v0.0.1
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
-        value: "catalog.nordmart-dev-apps.svc.cluster.local:8080"
-      imagePullSecrets: "docker-registry-nexus-secret"
+        value: "catalog.nordmart-dev-apps:8080"
+      # imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
@@ -57,7 +57,7 @@ spec:
       additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: cp-stakater.com
+        config.xposer.stakater.com/Domain: teststack.stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'

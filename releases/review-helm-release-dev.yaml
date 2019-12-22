@@ -19,9 +19,9 @@ spec:
         app: review
       volumes: {}
       image:
-        repository: docker-delivery.cp-stakater.com:443/stakater-lab/review
+        repository: stakater/stakater-nordmart-review
         tag: v0.0.1
-      imagePullSecrets: "docker-registry-nexus-secret"
+      # imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
@@ -30,7 +30,7 @@ spec:
       - name: DB_NAME
         value: "nordmartDB"
       - name: MONGO_HOST
-        value: "mongodb-svc.nordmart-dev-apps.svc.cluster.local"
+        value: "mongodb-svc.nordmart-dev-apps"
       probes:
         readinessProbe:
           failureThreshold: 3
@@ -58,7 +58,7 @@ spec:
       additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: cp-stakater.com
+        config.xposer.stakater.com/Domain: teststack.stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'
