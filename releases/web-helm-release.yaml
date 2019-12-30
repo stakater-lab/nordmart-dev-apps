@@ -20,8 +20,8 @@ spec:
       podLabels:
         app: web
       image:
-        repository: stakater/stakater-nordmart-web
-        tag: v0.0.1
+        repository: docker-delivery.workshop.stakater.com:443
+        tag: 0.0.0-PR-27-1-SNAPSHOT
       # imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
