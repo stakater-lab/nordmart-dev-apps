@@ -59,4 +59,3 @@ spec:
         name: default
     configMap:
       enabled: false
-      
