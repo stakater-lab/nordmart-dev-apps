@@ -54,7 +54,7 @@ spec:
       # - name: SSO_URL
       #   value: "https://keycloak.global.stakater.com"
       - name: SECURE_GW_ENDPOINT
-        value: "https://gateway-dev.workshop.stakater.com/"
+        value: "https://gateway-dev.nordmart-eks.stakater.com/"
     service:
       ports:
       - port: 4200
@@ -64,7 +64,7 @@ spec:
       additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: workshop.stakater.com
+        config.xposer.stakater.com/Domain: nordmart-eks.stakater.com
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'
