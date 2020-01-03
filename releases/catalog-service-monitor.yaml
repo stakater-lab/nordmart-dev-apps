@@ -7,7 +7,7 @@ items:
   metadata:
     name: stakater-nordmart-catalog-dev-monitor
     labels:
-      release: stakater-monitoring-po
+      release: stakater-monitoring-prometheus-operator
     namespace: monitoring
   spec:
     jobLabel: k8s-app
