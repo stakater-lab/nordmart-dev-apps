@@ -1,27 +1,32 @@
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-web
   namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
-    flux.weave.works/tag.deployment: semver:*
+    flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
 spec:
   releaseName: nordmart-dev-web
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
-    version: 0.0.6
+    version: 0.0.12
   values:
     applicationName: "web"
     deployment:
       podLabels:
         app: web
       image:
-        repository: docker.delivery.stackator.com:443/stakater-lab/web
-        tag: v0.0.15
+        repository: stakater/stakater-nordmart-web
+        tag: v0.0.1
       imagePullSecrets: "docker-registry-nexus-secret"
+      fluentdConfigAnnotations:
+        regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
+          (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+        regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+        timeFormat: "%Y-%m-%d %H:%M:%S.%L"
       probes:
         readinessProbe:
           failureThreshold: 3
@@ -48,17 +53,17 @@ spec:
       # - name: SSO_URL
       #   value: "https://keycloak.global.stakater.com"
       - name: SECURE_GW_ENDPOINT
-        value: "https://gateway-dev.stackator.com"
+        value: "https://gateway-dev.DOMAIN/"
     service:
       ports:
       - port: 4200
-        name: web
+        name: tcp
         protocol: TCP
         targetPort: 4200
-      additionalLabels: 
+      additionalLabels:
         expose: "true"
       annotations:
-        config.xposer.stakater.com/Domain: stackator.com
+        config.xposer.stakater.com/Domain: DOMAIN
         config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}-dev'
         config.xposer.stakater.com/IngressURLTemplate: '{{.Service}}-dev.{{.Domain}}'
         config.xposer.stakater.com/TLS: 'true'
