@@ -29,7 +29,11 @@ spec:
         timeFormat: "%Y-%m-%d %H:%M:%S.%L"
       env:
       - name: MYSQL_USER
-        value: "root"
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: mysql_username
+
       - name: MYSQL_PASSWORD
         valueFrom:
           secretKeyRef:
