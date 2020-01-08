@@ -1,0 +1,79 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nordmart-dev-review
+  namespace: nordmart-dev-apps
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
+spec:
+  releaseName: nordmart-dev-review
+  chart:
+    repository: https://stakater.github.io/stakater-charts/
+    name: application
+    version: 0.0.12
+  values:
+    applicationName: "review"
+    deployment:
+      podLabels:
+        app: review
+      volumes: {}
+      image:
+        repository: stakater/stakater-nordmart-review
+        tag: v0.0.1
+      fluentdConfigAnnotations:  
+          regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+          regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+          timeFormat: "%Y-%m-%d %H:%M:%S.%L"
+      env:
+      - name: DB_NAME
+        value: "nordmartDB"
+      - name: MONGO_HOST
+        value: "mongodb-svc.nordmart-dev-apps.svc.cluster.local"
+      probes:
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 8080
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 60
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 8080
+    service:
+      ports:
+      - port: 8080
+        name: https
+        targetPort: 8080
+    rbac:
+      create: true
+      serviceAccount:
+        create: true
+    configMap:
+      enabled: false
+#---
+#apiVersion: security.istio.io/v1beta1
+#kind: AuthorizationPolicy
+#metadata:
+#  name: review-policy
+#  namespace: nordmart-dev-apps
+#spec:
+#  selector:
+#    matchLabels:
+#      app: review
+#  rules:
+#    - from:
+#        - source:
+#            principals: ["cluster.local/ns/nordmart-dev-apps/sa/gateway"]
+#      to:
+#        - operation:
+#            methods: ["GET", "POST"]
