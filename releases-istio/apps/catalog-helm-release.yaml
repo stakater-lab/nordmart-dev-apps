@@ -46,6 +46,9 @@ spec:
       - name: MYSQL_DB_NAME
         value: "catalog"
 
+      - name: KAFKA_ADDRESS
+        value: "kafka-svc.nordmart-dev-apps:9092"
+
       probes:
         readinessProbe:
           failureThreshold: 3
