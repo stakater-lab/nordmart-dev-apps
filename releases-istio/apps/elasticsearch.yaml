@@ -40,22 +40,12 @@ spec:
                 secretKeyRef:
                   name: elasticsearch-secret
                   key: elasticsearch_password
+            - name: discovery.type
+              value: "single-node"
+            - name: bootstrap.memory_lock
+              value: "true"
+            - name: ES_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
           ports:
             - containerPort: 9200
               name: tcp
-#---
-#apiVersion: elasticsearch.k8s.elastic.co/v1beta1
-#kind: Elasticsearch
-#metadata:
-#  name: elasticsearch
-#  namespace: nordmart-dev-apps
-#spec:
-#  version: 7.5.0
-#  nodeSets:
-#    - name: default
-#      count: 1
-#      config:
-#        node.master: true
-#        node.data: true
-#        node.ingest: true
-#        node.store.allow_mmap: false

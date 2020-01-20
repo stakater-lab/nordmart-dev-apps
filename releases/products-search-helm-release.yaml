@@ -2,25 +2,25 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: nordmart-dev-products-seaarch
+  name: nordmart-dev-search
   namespace: nordmart-dev-apps
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
 spec:
-  releaseName: nordmart-dev-products-seaarch
+  releaseName: nordmart-dev-search
   chart:
     repository: https://stakater.github.io/stakater-charts/
     name: application
     version: 0.0.12
   values:
-    applicationName: "products-search"
+    applicationName: "search"
     deployment:
       podLabels:
         app: catalog
       volumes: {}
       image:
-        repository: stakater/stakater-nordmart-products-search
+        repository: stakater/stakater-nordmart-search
         tag: v0.0.1
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
@@ -39,7 +39,9 @@ spec:
       - name: ELASTICSEARCH_PORT
         value: "9200"
       - name: KAFKA_ADDRESS
-        value: "kafka-svc.nordmart-dev-apps:9092"
+        value: "kafka-svc.nordmart-dev-apps"
+      - name: KAFKA_PORT
+        value: "9092"
 
       probes:
         readinessProbe:
