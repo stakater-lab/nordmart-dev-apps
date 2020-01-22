@@ -45,9 +45,8 @@ spec:
         value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
       - name: MYSQL_DB_NAME
         value: "catalog"
-
       - name: KAFKA_ADDRESS
-        value: "kafka-svc.nordmart-dev-apps:9092"
+        value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps:9092"
 
       probes:
         readinessProbe:
