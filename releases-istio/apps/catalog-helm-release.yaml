@@ -34,18 +34,23 @@ spec:
           secretKeyRef:
             name: mysql-secret
             key: mysql_username
-
       - name: MYSQL_PASSWORD
         valueFrom:
           secretKeyRef:
             name: mysql-secret
             key: mysql_password
-
       - name: MYSQL_HOST
         value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
       - name: MYSQL_DB_NAME
         value: "catalog"
-
+      - name: KEYCLOAK_REALM
+        value: "nordmart"
+      - name: KEYCLOAK_URL
+        value: "http://keycloak-dev.DOMAIN:8180/auth/"
+      - name: KEYCLOAK_CLIENT_BACKEND
+        value: "stakater-nordmart-backend"
+      - name: KEYCLOAK_CLIENT_SECRET_KEY
+        value: "7672aea2-81ff-4aa2-affe-daf3bad10334"
       probes:
         readinessProbe:
           failureThreshold: 3

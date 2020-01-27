@@ -52,6 +52,10 @@ spec:
         value: "catalog.nordmart-dev-apps.svc.cluster.local"
       - name: CATALOG_API_PORT
         value: "8080"
+      - name: CUSTOMER_API_HOST
+        value: "customer.nordmart-dev-apps.svc.cluster.local"
+      - name: CUSTOMER_API_PORT
+        value: "8080"
       - name: INVENTORY_API_HOST
         value: "inventory.nordmart-dev-apps.svc.cluster.local"
       - name: INVENTORY_API_PORT

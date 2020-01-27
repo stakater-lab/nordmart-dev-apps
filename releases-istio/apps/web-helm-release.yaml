@@ -53,6 +53,8 @@ spec:
         value: "4200"
       - name: SECURE_GW_ENDPOINT
         value: "https://gateway-dev.DOMAIN/"
+      - name: SSO_URL
+        value: "https://keycloak-dev.DOMAIN"
     service:
       ports:
       - port: 4200

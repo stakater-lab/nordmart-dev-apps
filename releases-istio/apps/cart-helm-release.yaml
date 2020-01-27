@@ -26,6 +26,14 @@ spec:
       env:
       - name: CATALOG_ENDPOINT
         value: "catalog.nordmart-dev-apps.svc.cluster.local:8080"
+      - name: KEYCLOAK_REALM
+        value: "nordmart"
+      - name: KEYCLOAK_URL
+        value: "http://keycloak-dev.DOMAIN:8180/auth/"
+      - name: KEYCLOAK_CLIENT_BACKEND
+        value: "stakater-nordmart-backend"
+      - name: KEYCLOAK_CLIENT_SECRET_KEY
+        value: "7672aea2-81ff-4aa2-affe-daf3bad10334"
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
