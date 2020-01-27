@@ -34,7 +34,6 @@ spec:
           secretKeyRef:
             name: elasticsearch-secret
             key: elasticsearch_password
-
       - name: ELASTICSEARCH_HOST
         value: "elasticsearch-svc.nordmart-dev-apps"
       - name: ELASTICSEARCH_PORT
@@ -43,7 +42,6 @@ spec:
         value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps"
       - name: KAFKA_PORT
         value: "9092"
-
       probes:
         readinessProbe:
           failureThreshold: 3
