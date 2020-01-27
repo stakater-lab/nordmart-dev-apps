@@ -1,0 +1,62 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nordmart-dev-customer
+  namespace: nordmart-dev-apps
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
+    sidecar.istio.io/inject: "true"
+spec:
+  releaseName: nordmart-dev-customer
+  chart:
+    repository: https://stakater.github.io/stakater-charts/
+    name: application
+    version: 0.0.12
+  values:
+    applicationName: "customer"
+    deployment:
+      podLabels:
+        app: customer
+      image:
+        repository: stakater/stakater-nordmart-customer
+        tag: v0.0.1
+      volumes: {}
+      env:
+      - name: CATALOG_ENDPOINT
+        value: "catalog.nordmart-dev-apps.svc.cluster.local:8080"
+      fluentdConfigAnnotations:  
+          regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
+          regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
+          timeFormat: "%Y-%m-%d %H:%M:%S.%L"
+      probes:
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 8080
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+          initialDelaySeconds: 10
+          httpGet:
+            path: /health
+            port: 8080
+    service:
+      ports:
+      - port: 8080
+        name: https
+        targetPort: 8080
+    rbac:
+      create: true
+      serviceAccount:
+        create: true
+    configMap:
+      enabled: false
