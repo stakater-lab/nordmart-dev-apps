@@ -51,6 +51,9 @@ spec:
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY
         value: "7672aea2-81ff-4aa2-affe-daf3bad10334"
+      - name: KAFKA_ADDRESS
+        value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps:9092"
+
       probes:
         readinessProbe:
           failureThreshold: 3

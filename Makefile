@@ -4,7 +4,7 @@ SHELL := /bin/bash
 ### Without istio
 
 install-local:
-	kubectl apply releases/ -f .
+	kubectl apply -f releases/
 
 delete:
 	kubectl delete -f releases/
