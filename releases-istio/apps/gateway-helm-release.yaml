@@ -68,6 +68,10 @@ spec:
         value: "review.nordmart-dev-apps.svc.cluster.local"
       - name: REVIEW_API_PORT
         value: "8080"
+      - name: PRODUCT_SEARCH_API_HOST
+        value: "search.nordmart-dev-apps"
+      - name: PRODUCT_SEARCH_API_PORT
+        value: "8080"
     service:
       ports:
       - port: 8080
