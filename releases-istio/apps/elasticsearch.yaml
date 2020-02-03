@@ -49,3 +49,15 @@ spec:
           ports:
             - containerPort: 9200
               name: tcp
+#          volumeMounts:
+#            - mountPath: /data
+#              name: elasticsearch-pvc
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: elasticsearch-pvc
+#      spec:
+#        accessModes: [ "ReadWriteOnce" ]
+#        storageClassName: stakater-storageclass
+#        resources:
+#          requests:
+#            storage: 5Gi

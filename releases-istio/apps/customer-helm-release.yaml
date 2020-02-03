@@ -20,8 +20,9 @@ spec:
       podLabels:
         app: customer
       image:
-        repository: stakater/stakater-nordmart-customer
-        tag: v0.0.1
+        repository: docker.delivery.stakater.com:443/stakater-lab/customer
+        tag: 0.0.0-PR-1-7-SNAPSHOT
+      imagePullSecrets: "docker-registry-nexus-secret"
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
@@ -31,7 +32,7 @@ spec:
       - name: KEYCLOAK_REALM
         value: "nordmart"
       - name: KEYCLOAK_URL
-        value: "http://keycloak-dev.DOMAIN:8180/auth/"
+        value: "https://keycloak-dev.DOMAIN/auth/"
       - name: KEYCLOAK_CLIENT_BACKEND
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY
@@ -48,7 +49,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /health
+            path: /actuator/health
             port: 8080
         livenessProbe:
           failureThreshold: 3
@@ -57,7 +58,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /health
+            path: /actuator/health
             port: 8080
     service:
       ports:
