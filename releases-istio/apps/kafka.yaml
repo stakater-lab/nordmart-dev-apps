@@ -20,14 +20,14 @@ spec:
       volumes:
         - id: 0
           type: persistent-claim
-          size: 5Gi
+          size: 1Gi
           deleteClaim: false
           class: STORAGE_CLASS_NAME
   zookeeper:
     replicas: 1
     storage:
       type: persistent-claim
-      size: 5Gi
+      size: 1Gi
       deleteClaim: false
       class: STORAGE_CLASS_NAME
   entityOperator:
