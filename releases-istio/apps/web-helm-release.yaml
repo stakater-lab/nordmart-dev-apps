@@ -20,8 +20,9 @@ spec:
       podLabels:
         app: web
       image:
-        repository: stakater/stakater-nordmart-web
+        repository: docker.delivery.stakater.com:443/stakater-lab/web
         tag: v0.0.1
+      imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
           (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
@@ -51,9 +52,9 @@ spec:
       - name: PORT
         value: "4200"
       - name: SECURE_GW_ENDPOINT
-        value: "https://gateway-dev.DOMAIN"
+        value: "https://gateway-dev.nordmart-eks.stakater.com"
       - name: SSO_URL
-        value: "https://keycloak-dev.DOMAIN/auth"
+        value: "https://keycloak-dev.nordmart-eks.stakater.com/auth"
       - name: SSO_REALM
         value: "nordmart"
       - name: SSO_CLIENT_ID
@@ -80,7 +81,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-    - "web-dev.DOMAIN"
+    - "web-dev.nordmart-eks.stakater.com"
   gateways:
     - istio-gateway
   http:

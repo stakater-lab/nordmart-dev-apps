@@ -20,8 +20,9 @@ spec:
       podLabels:
         app: cart
       image:
-        repository: stakater/stakater-nordmart-cart
+        repository: docker.delivery.stakater.com:443/stakater-lab/cart
         tag: v0.0.1
+      imagePullSecrets: "docker-registry-nexus-secret"
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
@@ -29,7 +30,7 @@ spec:
       - name: KEYCLOAK_REALM
         value: "nordmart"
       - name: KEYCLOAK_URL
-        value: "https://keycloak-dev.DOMAIN/auth/"
+        value: "https://keycloak-dev.nordmart-eks.stakater.com/auth/"
       - name: KEYCLOAK_CLIENT_BACKEND
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY

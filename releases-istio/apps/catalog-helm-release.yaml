@@ -21,8 +21,9 @@ spec:
         app: catalog
       volumes: {}
       image:
-        repository: stakater/stakater-nordmart-catalog
+        repository: docker.delivery.stakater.com:443/stakater-lab/catalog
         tag: v0.0.1
+      imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
           (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
@@ -46,7 +47,7 @@ spec:
       - name: KEYCLOAK_REALM
         value: "nordmart"
       - name: KEYCLOAK_URL
-        value: "https://keycloak-dev.DOMAIN/auth/"
+        value: "https://keycloak-dev.nordmart-eks.stakater.com/auth/"
       - name: KEYCLOAK_CLIENT_BACKEND
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY
