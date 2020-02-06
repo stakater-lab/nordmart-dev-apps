@@ -16,8 +16,8 @@ spec:
         serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
         privateKey: /etc/istio/ingressgateway-certs/tls.key
       hosts:
-        - "gateway-dev.nordmart-eks.stakater.com"
-        - "web-dev.nordmart-eks.stakater.com"
+        - "gateway-dev.DOMAIN"
+        - "web-dev.DOMAIN"
     - port:
         number: 80
         name: http
@@ -25,5 +25,5 @@ spec:
       tls:
         httpsRedirect: true
       hosts:
-        - "gateway-dev.nordmart-eks.stakater.com"
-        - "web-dev.nordmart-eks.stakater.com"
+        - "gateway-dev.DOMAIN"
+        - "web-dev.DOMAIN"

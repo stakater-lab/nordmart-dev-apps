@@ -23,6 +23,9 @@ spec:
       image:
         repository: stakater/stakater-nordmart-inventory
         tag: v0.0.1
+      env:
+      - name: JAEGER_ENDPOINT
+        value: "http://jaeger-collector.istio-system:14268/api/traces"
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/

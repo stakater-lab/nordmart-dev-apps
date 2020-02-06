@@ -42,6 +42,8 @@ spec:
         value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps"
       - name: KAFKA_PORT
         value: "9092"
+      - name: JAEGER_ENDPOINT
+        value: "http://jaeger-collector.istio-system:14268/api/traces"
       probes:
         readinessProbe:
           failureThreshold: 3
@@ -61,7 +63,6 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-
     service:
       ports:
       - port: 8080

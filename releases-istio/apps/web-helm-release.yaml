@@ -58,6 +58,8 @@ spec:
         value: "nordmart"
       - name: SSO_CLIENT_ID
         value: "stakater-nordmart-web"
+      - name: JAEGER_ENDPOINT
+        value: "http://jaeger-collector.istio-system:14268/api/traces"
     service:
       ports:
       - port: 4200
