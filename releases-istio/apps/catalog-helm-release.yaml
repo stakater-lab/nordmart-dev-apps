@@ -53,6 +53,8 @@ spec:
         value: "7672aea2-81ff-4aa2-affe-daf3bad10334"
       - name: KAFKA_ADDRESS
         value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps:9092"
+      - name: JAEGER_ENDPOINT
+        value: "http://jaeger-collector.istio-system:14268/api/traces"
 
       probes:
         readinessProbe:
