@@ -21,7 +21,7 @@ spec:
         app: gateway
       image:
         repository: docker.delivery.stakater.com:443/stakater-lab/gateway
-        tag: v0.0.1
+        tag: 0.0.0-test-log-level-2-SNAPSHOT
       imagePullSecrets: "docker-registry-nexus-secret"
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
@@ -36,7 +36,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /health
+            path: /actuator/health
             port: 8080
         livenessProbe:
           failureThreshold: 3
@@ -45,7 +45,7 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 10
           httpGet:
-            path: /health
+            path: /actuator/health
             port: 8080
       volumes: {}
       env:

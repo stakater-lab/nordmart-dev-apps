@@ -33,7 +33,7 @@ spec:
       name: mongodb-pvc
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: STORAGE_CLASS_NAME
+      storageClassName: stakater-storageclass
       resources:
         requests:
           storage: 1Gi
