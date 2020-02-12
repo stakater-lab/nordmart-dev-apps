@@ -2,7 +2,6 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-keycloak
-  namespace: nordmart-demo-tools
 spec:
   releaseName: nordmart-dev-keycloak
   chart:
@@ -155,7 +154,7 @@ spec:
         fsGroup: 1000
       service:
         # annotations:
-        #   config.xposer.stakater.com/Domain: nordmart-eks.stakater.com
+        #   config.xposer.stakater.com/Domain: DOMAIN
         #   config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
         #   config.xposer.stakater.com/IngressURLTemplate: keycloak-NAMESPACE.{{.Domain}}
         #   config.xposer.stakater.com/TLS: "true"

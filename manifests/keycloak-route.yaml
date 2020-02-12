@@ -7,7 +7,6 @@ metadata:
     expose: "true"
     helm.sh/chart: keycloak-5.1.7
   name: keycloak-dev
-  namespace: nordmart-demo-tools
 spec:
   host: keycloak-NAMESPACE.DOMAIN
   port:
