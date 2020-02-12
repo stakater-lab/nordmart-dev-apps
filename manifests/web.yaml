@@ -127,7 +127,7 @@ metadata:
     forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/stakater.png
     kubernetes.io/ingress.class: Nordmart
     monitor.stakater.com/enabled: true
-    spec:
+spec:
   rules:
     - host: web-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
       http:
