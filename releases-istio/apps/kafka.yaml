@@ -2,7 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta1
 kind: Kafka
 metadata:
   name: kafka-cluster
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   kafka:
     version: 2.4.0
@@ -22,14 +22,14 @@ spec:
           type: persistent-claim
           size: 1Gi
           deleteClaim: false
-          class: stakater-storageclass
+          class: ibmc-block-gold
   zookeeper:
     replicas: 1
     storage:
       type: persistent-claim
       size: 1Gi
       deleteClaim: false
-      class: stakater-storageclass
+      class: ibmc-block-gold
   entityOperator:
     topicOperator: {}
     userOperator: {}

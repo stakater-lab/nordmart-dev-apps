@@ -4,7 +4,7 @@ metadata:
   labels:
     app: mysql
   name: mysql-svc
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   ports:
   - name: "mysql-port"
@@ -17,7 +17,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   serviceName: "mysql"
   selector:
@@ -61,7 +61,7 @@ spec:
       name: mysql-pvc
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: stakater-storageclass
+      storageClassName: ibmc-block-gold
       resources:
         requests:
           storage: 1Gi

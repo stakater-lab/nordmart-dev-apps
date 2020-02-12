@@ -4,7 +4,7 @@ metadata:
   labels:
     app: cassandra
   name: cassandra
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   clusterIP: None
   ports:
@@ -16,7 +16,7 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: cassandra
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   serviceName: cassandra
   replicas: 1
@@ -39,7 +39,7 @@ spec:
               name: cql
           env:
             - name: CASSANDRA_SEEDS
-              value: cassandra-0.cassandra.nordmart-dev-apps.svc.cluster.local
+              value: cassandra-0.cassandra.nordmart-demo.svc.cluster.local
             - name: MAX_HEAP_SIZE
               value: 512M
             - name: HEAP_NEWSIZE
@@ -61,10 +61,10 @@ spec:
     - metadata:
         name: cassandra-pvc
         annotations:
-          volume.beta.kubernetes.io/storage-class: stakater-storageclass
+          volume.beta.kubernetes.io/storage-class: ibmc-file-gold
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: stakater-storageclass
+        storageClassName: ibmc-file-gold
         resources:
           requests:
             storage: 1Gi

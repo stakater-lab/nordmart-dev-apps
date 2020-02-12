@@ -2,7 +2,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-review
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
@@ -19,9 +19,8 @@ spec:
         app: review
       volumes: {}
       image:
-        repository: docker.delivery.stakater.com:443/stakater-lab/review
-        tag: v0.0.1
-      imagePullSecrets: "docker-registry-nexus-secret"
+        repository: stakater/stakater-nordmart-review
+        tag: v0.0.2
       fluentdConfigAnnotations:  
           regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+) (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
           regexFirstLine: /^\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+/
@@ -30,7 +29,7 @@ spec:
       - name: DB_NAME
         value: "nordmartDB"
       - name: MONGO_HOST
-        value: "mongodb-svc.nordmart-dev-apps.svc.cluster.local"
+        value: "mongodb-svc.nordmart-demo.svc.cluster.local"
       - name: JAEGER_ENDPOINT
         value: "http://jaeger-collector.istio-system:14268/api/traces"
       probes:
