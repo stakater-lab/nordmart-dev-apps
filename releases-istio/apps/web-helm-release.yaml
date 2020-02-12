@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-web
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
@@ -21,7 +21,7 @@ spec:
         app: web
       image:
         repository: stakater/stakater-nordmart-web
-        tag: v0.0.1
+        tag: v0.0.4
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
           (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
@@ -51,9 +51,11 @@ spec:
       - name: PORT
         value: "4200"
       - name: SECURE_GW_ENDPOINT
-        value: "https://gateway-dev.DOMAIN"
+        value: "https://gateway-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud"
+      - name: NORDMART_GW_ENDPOINT
+        value: "https://gateway-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud"
       - name: SSO_URL
-        value: "https://keycloak-dev.DOMAIN/auth"
+        value: "https://keycloak-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth/"
       - name: SSO_REALM
         value: "nordmart"
       - name: SSO_CLIENT_ID
@@ -61,9 +63,20 @@ spec:
       - name: JAEGER_ENDPOINT
         value: "http://jaeger-collector.istio-system:14268/api/traces"
     service:
+      annotations:
+        config.xposer.stakater.com/Domain: nordmart-eks.stakater.com
+        config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
+        config.xposer.stakater.com/IngressURLTemplate: web-dev.{{.Domain}}
+        config.xposer.stakater.com/TLS: "true"
+        config.xposer.stakater.com/TLSSecretNameTemplate: tls-cert
+        xposer.stakater.com/annotations: |-
+          kubernetes.io/ingress.class: internal-ingress
+          ingress.kubernetes.io/force-ssl-redirect: false
+          nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+          exposeIngressUrl: globally
       ports:
       - port: 4200
-        name: tcp
+        name: web
         protocol: TCP
         targetPort: 4200
     rbac:
@@ -72,18 +85,18 @@ spec:
         create: true
     configMap:
       enabled: false
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: web-dev-virtualservice
-  namespace: istio-system
-spec:
-  hosts:
-    - "web-dev.DOMAIN"
-  gateways:
-    - istio-gateway
-  http:
-    - route:
-        - destination:
-            host: web.nordmart-dev-apps.svc.cluster.local
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: web-dev-virtualservice
+#   namespace: istio-system
+# spec:
+#   hosts:
+#     - "web-dev.nordmart-eks.stakater.com"
+#   gateways:
+#     - istio-gateway
+#   http:
+#     - route:
+#         - destination:
+#             host: web.nordmart-dev-apps.svc.cluster.local

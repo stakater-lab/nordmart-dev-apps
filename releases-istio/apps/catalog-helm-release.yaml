@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-catalog
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
@@ -22,7 +22,7 @@ spec:
       volumes: {}
       image:
         repository: stakater/stakater-nordmart-catalog
-        tag: v0.0.1
+        tag: v0.0.2
       fluentdConfigAnnotations:
         regex: /^(?<time>\\d+(?:-\\d+){2}\\s+\\d+(?::\\d+){2}\\.\\d+)\\s*(?<level>\\S+)
           (?<pid>\\d+) --- \\[(?<thread>[\\s\\S]*?)\\] (?<class>\\S+)\\s*:\\s*(?<message>[\\s\\S]*?)(?=\\g<time>|\\Z)/
@@ -40,19 +40,19 @@ spec:
             name: mysql-secret
             key: mysql_password
       - name: MYSQL_HOST
-        value: "mysql-svc.nordmart-dev-apps.svc.cluster.local"
+        value: "mysql-svc.nordmart-demo.svc.cluster.local"
       - name: MYSQL_DB_NAME
         value: "catalog"
       - name: KEYCLOAK_REALM
         value: "nordmart"
       - name: KEYCLOAK_URL
-        value: "https://keycloak-dev.DOMAIN/auth/"
+        value: "https://keycloak-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth/"
       - name: KEYCLOAK_CLIENT_BACKEND
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY
         value: "7672aea2-81ff-4aa2-affe-daf3bad10334"
       - name: KAFKA_ADDRESS
-        value: "kafka-cluster-kafka-bootstrap.nordmart-dev-apps:9092"
+        value: "kafka-cluster-kafka-bootstrap.nordmart-demo:9092"
       - name: JAEGER_ENDPOINT
         value: "http://jaeger-collector.istio-system:14268/api/traces"
 

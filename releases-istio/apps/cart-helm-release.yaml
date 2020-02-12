@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: nordmart-dev-cart
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.deployment: regexp:^([0-9]+.[0-9]+.[0-9]+-PR-[0-9]{2}-[0-9]+-SNAPSHOT)$
@@ -21,15 +21,15 @@ spec:
         app: cart
       image:
         repository: stakater/stakater-nordmart-cart
-        tag: v0.0.1
+        tag: v0.0.2
       volumes: {}
       env:
       - name: CATALOG_ENDPOINT
-        value: "catalog.nordmart-dev-apps.svc.cluster.local:8080"
+        value: "catalog.nordmart-demo.svc.cluster.local:8080"
       - name: KEYCLOAK_REALM
         value: "nordmart"
       - name: KEYCLOAK_URL
-        value: "https://keycloak-dev.DOMAIN/auth/"
+        value: "https://keycloak-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth/"
       - name: KEYCLOAK_CLIENT_BACKEND
         value: "stakater-nordmart-backend"
       - name: KEYCLOAK_CLIENT_SECRET_KEY

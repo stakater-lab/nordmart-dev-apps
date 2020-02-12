@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongodb
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   serviceName: "mongodb"
   selector:
@@ -33,7 +33,7 @@ spec:
       name: mongodb-pvc
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: STORAGE_CLASS_NAME
+      storageClassName: ibmc-block-gold
       resources:
         requests:
           storage: 1Gi
@@ -44,7 +44,7 @@ metadata:
   labels:
     app: mongodb
   name: mongodb-svc
-  namespace: nordmart-dev-apps
+  namespace: nordmart-demo
 spec:
   ports:
   - name: "mongo-port"

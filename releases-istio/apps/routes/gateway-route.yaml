@@ -1,0 +1,24 @@
+kind: Route
+metadata:
+  labels:
+    app: gateway
+    chart: application-0.0.12
+    group: com.stakater.platform
+    heritage: Tiller
+    provider: stakater
+    release: nordmart-dev-gateway
+    version: 1.0.0
+  name: gateway-dev
+  namespace: nordmart-demo
+spec:
+  host: gateway-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+  port:
+    targetPort: https
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: gateway
+    weight: 100
+  wildcardPolicy: None

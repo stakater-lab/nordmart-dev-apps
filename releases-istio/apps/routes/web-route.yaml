@@ -1,0 +1,24 @@
+kind: Route
+metadata:
+  labels:
+    app: web
+    chart: application-0.0.12
+    group: com.stakater.platform
+    heritage: Tiller
+    provider: stakater
+    release: nordmart-dev-web
+    version: 1.0.0
+  name: web-dev
+  namespace: nordmart-demo
+spec:
+  host: web-dev.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+  port:
+    targetPort: web
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: web
+    weight: 100
+  wildcardPolicy: None
