@@ -55,16 +55,8 @@ spec:
             - name: CASSANDRA_ENDPOINT_SNITCH
               value: GossipingPropertyFileSnitch
           volumeMounts:
-            - name: cassandra-pvc
+            - name: data
               mountPath: /var/lib/cassandra
-  volumeClaimTemplates:
-    - metadata:
-        name: cassandra-pvc
-        annotations:
-          volume.beta.kubernetes.io/storage-class: stakater-storageclass
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: stakater-storageclass
-        resources:
-          requests:
-            storage: 1Gi
+      volumes:
+        - name: data
+          emptyDir: {}
