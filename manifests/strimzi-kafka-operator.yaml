@@ -10,5 +10,5 @@ spec:
     version: 0.16.0
   values:
     watchNamespaces:
-      - NAMESPACE
+      - stakater-nordmart-test
     watchAnyNamespace: false

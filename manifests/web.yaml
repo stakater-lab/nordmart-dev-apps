@@ -76,9 +76,9 @@ spec:
           - name: PORT
             value: "4200"
           - name: SECURE_GW_ENDPOINT
-            value: https://gateway-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+            value: https://gateway-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
           - name: SSO_URL
-            value: https://keycloak-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth
+            value: https://keycloak-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth
           - name: SSO_REALM
             value: nordmart
           - name: SSO_CLIENT_ID
@@ -121,7 +121,7 @@ metadata:
     release: "RELEASE-NAME"
     heritage: "Tiller"
   annotations:
-    forecastle.stakater.com/appName: Web-NAMESPACE
+    forecastle.stakater.com/appName: Web-stakater-nordmart-test
     forecastle.stakater.com/expose: true
     forecastle.stakater.com/group: Nordmart
     forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/stakater.png
@@ -129,7 +129,7 @@ metadata:
     monitor.stakater.com/enabled: true
     spec:
   rules:
-    - host: web-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+    - host: web-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
       http:
         paths:
           - path: /

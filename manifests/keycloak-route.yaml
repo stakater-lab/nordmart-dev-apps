@@ -8,7 +8,7 @@ metadata:
     helm.sh/chart: keycloak-5.1.7
   name: keycloak-dev
 spec:
-  host: keycloak-NAMESPACE.DOMAIN
+  host: keycloak-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
   port:
     targetPort: http
   tls:

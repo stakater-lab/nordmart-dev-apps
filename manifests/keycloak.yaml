@@ -154,9 +154,9 @@ spec:
         fsGroup: 1000
       service:
         # annotations:
-        #   config.xposer.stakater.com/Domain: DOMAIN
+        #   config.xposer.stakater.com/Domain: stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
         #   config.xposer.stakater.com/IngressNameTemplate: '{{.Service}}'
-        #   config.xposer.stakater.com/IngressURLTemplate: keycloak-NAMESPACE.{{.Domain}}
+        #   config.xposer.stakater.com/IngressURLTemplate: keycloak-stakater-nordmart-test.{{.Domain}}
         #   config.xposer.stakater.com/TLS: "true"
         #   config.xposer.stakater.com/TLSSecretNameTemplate: tls-cert
         #   xposer.stakater.com/annotations: |-
