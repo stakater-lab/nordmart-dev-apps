@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app.kubernetes.io/instance: nordmart-dev-web
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: web
+    expose: "true"
+  name: web-dev
+spec:
+  host: web-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+  port:
+    targetPort: tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: web
+    weight: 100
+  wildcardPolicy: None
