@@ -2,20 +2,20 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app.kubernetes.io/instance: NAMESPACE-keycloak
+    app.kubernetes.io/instance: NAMESPACE-web
     app.kubernetes.io/managed-by: Tiller
-    app.kubernetes.io/name: keycloak
+    app.kubernetes.io/name: web
     expose: "true"
-  name: keycloak-dev
+  name: web-dev
 spec:
-  host: keycloak-NAMESPACE.DOMAIN
+  host: web-NAMESPACE.DOMAIN
   port:
-    targetPort: http
+    targetPort: tcp
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
     kind: Service
-    name: NAMESPACE-keyclo-http
+    name: web
     weight: 100
   wildcardPolicy: None
