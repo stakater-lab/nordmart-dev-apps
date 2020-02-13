@@ -1,9 +1,9 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: nordmart-dev-keycloak
+  name: nordmart-stakater-nordmart-test-keycloak
 spec:
-  releaseName: nordmart-dev-keycloak
+  releaseName: nordmart-stakater-nordmart-test-keycloak
   chart:
     repository: https://codecentric.github.io/helm-charts
     name: keycloak
@@ -106,7 +106,7 @@ spec:
       nodeSelector: {}
       password: ""
       persistence:
-        dbHost: nordmart-dev-keycloak-postgresql
+        dbHost: nordmart-stakater-nordmart-test-keycloak-postgresql
         dbName: keycloak-db
         dbPassword: ""
         dbPort: 5432

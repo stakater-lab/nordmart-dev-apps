@@ -125,7 +125,9 @@ metadata:
     forecastle.stakater.com/expose: true
     forecastle.stakater.com/group: Nordmart
     forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/stakater.png
-    kubernetes.io/ingress.class: Nordmart
+    ingress.kubernetes.io/force-ssl-redirect: true
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: external-ingress
     monitor.stakater.com/enabled: true
 spec:
   rules:
@@ -135,7 +137,7 @@ spec:
           - path: /
             backend:
               serviceName: web
-              servicePort: 8080
+              servicePort: 4200
 ---
 # Source: application/templates/clusterrole.yaml
 
