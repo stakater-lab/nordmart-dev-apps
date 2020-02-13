@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/managed-by: Tiller
     app.kubernetes.io/name: keycloak
     expose: "true"
-  name: keycloak-dev
+  name: keycloak
 spec:
   host: keycloak-NAMESPACE.DOMAIN
   port:

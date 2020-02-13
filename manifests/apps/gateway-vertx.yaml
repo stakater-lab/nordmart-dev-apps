@@ -149,7 +149,7 @@ metadata:
     monitor.stakater.com/enabled: true
 spec:
   rules:
-    - host: gateway-stakater-nordmart-test.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
+    - host: gateway-NAMESPACE.DOMAIN
       http:
         paths:
           - path: /
