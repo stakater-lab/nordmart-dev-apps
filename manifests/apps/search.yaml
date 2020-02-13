@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: search
-        image: "stakater/search:v0.0.1"
+        image: "stakater/stakater-nordmart-search:v0.0.1"
         imagePullPolicy: IfNotPresent
         env:
           - name: ELASTICSEARCH_PASSWORD

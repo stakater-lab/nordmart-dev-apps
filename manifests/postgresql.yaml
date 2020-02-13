@@ -1,9 +1,9 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: nordmart-dev-keycloak-postgresql
+  name: NAMESPACE-postgresql
 spec:
-  releaseName: nordmart-dev-keycloak-postgresql
+  releaseName: NAMESPACE-postgresql
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: postgresql

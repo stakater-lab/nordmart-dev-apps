@@ -69,7 +69,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: "stakater/stakater-nordmart-cart:v0.0.1"
+        image: "stakater/stakater-nordmart-cart:v0.0.2"
         imagePullPolicy: IfNotPresent
         env:
           - name: CATALOG_ENDPOINT

@@ -5,14 +5,14 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   labels:
-    app: web
+    app: catalog
     group: com.stakater.platform
     provider: stakater
     version: "1.0.0"
     chart: "application-0.0.12"
     release: "RELEASE-NAME"
     heritage: "Tiller"
-  name: web
+  name: catalog
 ---
 # Source: application/templates/service.yaml
 
@@ -20,23 +20,21 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: web
+    app: catalog
     group: com.stakater.platform
     provider: stakater
     version: "1.0.0"
     chart: "application-0.0.12"
     release: "RELEASE-NAME"
     heritage: "Tiller"
-  name: web
+  name: catalog
 spec:
   selector:
-    app: web
+    app: catalog
     
   ports:
-    - name: tcp
-      port: 4200
-      protocol: TCP
-      targetPort: 4200
+    - name: https
+      port: 8080
     
 ---
 # Source: application/templates/deployment.yaml
@@ -45,97 +43,81 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: web
+    app: catalog
     group: com.stakater.platform
     provider: stakater
     version: "1.0.0"
     chart: "application-0.0.12"
     release: "RELEASE-NAME"
     heritage: "Tiller"
-  name: web
+  name: catalog
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: web
+        app: catalog
         group: com.stakater.platform
         provider: stakater
         version: "1.0.0"
         chart: "application-0.0.12"
         release: "RELEASE-NAME"
         heritage: "Tiller"
-        app: web
+        app: catalog
         
     spec:
       containers:
-      - name: web
-        image: "stakater/stakater-nordmart-web:v0.0.1"
+      - name: catalog
+        image: "stakater/stakater-nordmart-catalog:v0.0.2"
         imagePullPolicy: IfNotPresent
         env:
-          - name: PORT
-            value: "4200"
-          - name: SECURE_GW_ENDPOINT
-            value: https://gateway-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
-          - name: SSO_URL
-            value: https://keycloak-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud/auth
-          - name: SSO_REALM
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: mysql_username
+                name: mysql-secret
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: mysql_password
+                name: mysql-secret
+          - name: MYSQL_HOST
+            value: mysql-svc
+          - name: MYSQL_DB_NAME
+            value: catalog
+          - name: KEYCLOAK_REALM
             value: nordmart
-          - name: SSO_CLIENT_ID
-            value: stakater-nordmart-web
+          - name: KEYCLOAK_URL
+            value: https://keycloak-NAMESPACE.DOMAIN
+          - name: KEYCLOAK_CLIENT_BACKEND
+            value: stakater-nordmart-backend
+          - name: KEYCLOAK_CLIENT_SECRET_KEY
+            value: 7672aea2-81ff-4aa2-affe-daf3bad10334
+          - name: KAFKA_ADDRESS
+            value: kafka-cluster-kafka-bootstrap:9092
           - name: JAEGER_ENDPOINT
             value: http://jaeger-collector.istio-system:14268/api/traces
           
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /health
-            port: 4200
+            path: /actuator/health
+            port: 8080
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 60
           successThreshold: 1
           timeoutSeconds: 1
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /health
-            port: 4200
+            path: /actuator/health
+            port: 8080
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 60
           successThreshold: 1
           timeoutSeconds: 1
         
-      serviceAccountName: web        
----
-# Source: application/templates/ingress.yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: web
-  labels:
-    app: web
-    group: com.stakater.platform
-    provider: stakater
-    version: "1.0.0"
-    chart: "application-0.0.12"
-    release: "RELEASE-NAME"
-    heritage: "Tiller"
-  annotations:
-    forecastle.stakater.com/appName: Web-NAMESPACE
-    forecastle.stakater.com/expose: true
-    forecastle.stakater.com/group: Nordmart
-    forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/stakater.png
-    kubernetes.io/ingress.class: Nordmart
-    monitor.stakater.com/enabled: true
-spec:
-  rules:
-    - host: web-NAMESPACE.stakater-200205-1-5c84fa685b23fe4798253ee758d532d0-0000.eu-de.containers.appdomain.cloud
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: web
-              servicePort: 8080
+      serviceAccountName: catalog        
 ---
 # Source: application/templates/clusterrole.yaml
 
@@ -144,6 +126,9 @@ spec:
 
 ---
 # Source: application/templates/configmap.yaml
+
+---
+# Source: application/templates/ingress.yaml
 
 ---
 # Source: application/templates/pvc.yaml

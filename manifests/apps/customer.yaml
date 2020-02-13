@@ -69,7 +69,7 @@ spec:
     spec:
       containers:
       - name: customer
-        image: "stakater/customer:v0.0.1"
+        image: "stakater/stakater-nordmart-customer:v0.0.1"
         imagePullPolicy: IfNotPresent
         env:
           - name: CATALOG_ENDPOINT
