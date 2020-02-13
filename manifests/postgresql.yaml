@@ -54,13 +54,7 @@ spec:
       port: 5432
       type: ClusterIP
     persistence:
-      accessModes:
-      - ReadWriteOnce
-      enabled: true
-      mountPath: /bitnami/postgresql
-      size: 1Gi
-      storageClass: ibmc-block-gold
-      subPath: ""
+      enabled: false
     updateStrategy:
       type: RollingUpdate
     master:
