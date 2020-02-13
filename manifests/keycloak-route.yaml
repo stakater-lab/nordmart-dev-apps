@@ -17,6 +17,6 @@ spec:
     termination: edge
   to:
     kind: Service
-    name: nordmart-dev-keycloa-http
+    name: nordmart-test-keyclo-http
     weight: 100
   wildcardPolicy: None
